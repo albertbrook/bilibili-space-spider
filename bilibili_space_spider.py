@@ -32,6 +32,8 @@ class Bss(object):
         except FileExistsError:
             pass
         os.chdir(name)
+        with open("{}.json".format(name), mode="w", encoding="utf-8") as file:
+            file.write(json.dumps(self.json_list[0]["data"]["list"]["tlist"], ensure_ascii=False))
         for json_dict in self.json_list:
             for json_data in json_dict["data"]["list"]["vlist"]:
                 self.save_file(json_data)
@@ -51,7 +53,7 @@ class Bss(object):
             pass
         with open("{}/{}.json".format(av, av), mode="w", encoding="utf-8") as file:
             file.write(json.dumps(json_data, ensure_ascii=False))
-        with open("{}/{}.jpg".format(av, json_data["pic"].split("/")[-1]), mode="wb") as image:
+        with open("{}/{}".format(av, json_data["pic"].split("/")[-1]), mode="wb") as image:
             response = requests.get("https:{}".format(json_data["pic"]), headers=self.headers)
             image.write(response.content)
         print("save completed {}".format(av))
