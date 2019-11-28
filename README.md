@@ -13,7 +13,7 @@ os是标准库，用来创建文件夹
 ## 获取数据
 请求的url是
 ```python
-"https://api.bilibili.com/x/space/arc/search?mid=25498927&ps=30&tid=0&pn=1&keyword=&order=pubdate&jsonp=jsonp".format(uid, page_number)
+"https://api.bilibili.com/x/space/arc/search?mid={}&ps=30&tid=0&pn={}&keyword=&order=pubdate&jsonp=jsonp".format(uid, page_number)
 ```
 通过网络抓包工具很容易发现这个url，填入相应的url和页码就可以获得相关数据
 ## 保存数据
